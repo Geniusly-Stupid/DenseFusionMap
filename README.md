@@ -34,3 +34,7 @@ DenseFusionMap/
 └── requirements.txt                  # Python dependency list
 ```
 
+## How to use
+```shell
+python src\visualization\visualize_ply.py data\reconstruct\fr1_room\mesh.ply
+```

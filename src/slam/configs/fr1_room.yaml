@@ -1,4 +1,4 @@
-data_root: "/home/cometia/eecs568/KinectFusion/KinectFusion/dataset/rgbd_dataset_freiburg1_room"
+data_root: "D:\\Desktop\\EECS568\\Project\\DenseFusionMap\\data\\rgbd_dataset"
 data_type: "fr1"
 near: 0.1
 far: 8.0

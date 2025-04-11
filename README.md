@@ -36,5 +36,11 @@ DenseFusionMap/
 
 ## How to use
 ```shell
-python src\visualization\visualize_ply.py data\reconstruct\fr1_room\mesh.ply
+python src\preprocessing\project_lidar_to_frame.py
+python src\depth_estimation\test.py
+python src\preprocessing\generate_filenames.py
+python src\preprocessing\kitti_poses_and_timestamps_to_trajectory.py
+python src\slam\dataset\preprocess.py --config src\slam\configs\slam.yaml
+python src\slam\kinfu.py --config src\slam\configs\slam.yaml --save_dir data\reconstruct\slam
+python src\visualization\visualize_ply.py data\reconstruct\slam\mesh.ply
 ```

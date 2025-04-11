@@ -1,0 +1,10 @@
+data_root: "D:\\Desktop\\EECS568\\Project\\DenseFusionMap\\data\\slam"
+data_type: "kitti"
+near: 0.1
+far: 30.0
+vol_bounds: [-10.0, 9.0, -10.0, 9.0, -10.0, 9.0]
+voxel_size: 0.1
+n_pyramids: 3
+n_iters: [6, 3, 3]
+dampings: [1.0e-4, 1.0e-4, 1.0e-2]
+n_steps: 192

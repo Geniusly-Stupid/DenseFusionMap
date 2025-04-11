@@ -11,7 +11,7 @@ def integrate(
         depth_im,
         cam_intr,
         cam_pose,
-        max_weight,
+        obs_weight,
         world_c,  # world coordinates grid [nx*ny*nz, 4]
         vox_coords,  # voxel coordinates grid [nx*ny*nz, 3]
         weight_vol,  # weight volume [nx, ny, nz]
@@ -50,12 +50,6 @@ def integrate(
     valid_dist = dist[valid_pts]
     w_old = weight_vol[valid_vox_x, valid_vox_y, valid_vox_z]
     tsdf_vals = tsdf_vol[valid_vox_x, valid_vox_y, valid_vox_z]
-    
-    # obs_weight = max_weight
-    # Confidence model
-    confidence = torch.exp(-torch.abs(valid_dist))
-    obs_weight = torch.clamp(confidence, 0, max_weight)
-    
     w_new = w_old + obs_weight
     tsdf_vol[valid_vox_x, valid_vox_y, valid_vox_z] = (w_old * tsdf_vals + obs_weight * valid_dist) / w_new
     weight_vol[valid_vox_x, valid_vox_y, valid_vox_z] = w_new
@@ -64,8 +58,7 @@ def integrate(
         old_color = color_vol[valid_vox_x, valid_vox_y, valid_vox_z]
         new_color = color_im[pix_y[valid_pix], pix_x[valid_pix]]
         new_color = new_color[valid_pts]
-        # color_vol[valid_vox_x, valid_vox_y, valid_vox_z, :] = (w_old[:, None] * old_color + obs_weight * new_color) / w_new[:, None]
-        color_vol[valid_vox_x, valid_vox_y, valid_vox_z, :] = (w_old[:, None] * old_color + obs_weight[:, None] * new_color) / w_new[:, None]
+        color_vol[valid_vox_x, valid_vox_y, valid_vox_z, :] = (w_old[:, None] * old_color + obs_weight * new_color) / w_new[:, None]
 
     return weight_vol, tsdf_vol, color_vol
 

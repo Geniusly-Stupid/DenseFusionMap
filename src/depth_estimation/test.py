@@ -156,11 +156,17 @@ def imae(gt, img, ratio):
 def main():
    processed = preprocess.get_transform(augment=False)
 
-   gt_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\proj_depth\groundtruth\image_02'
-   left_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\image_02\data'
-   lidar2_raw = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\velodyne_raw\image_02'
+   # gt_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\proj_depth\groundtruth\image_02'
+   # left_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\image_02\data'
+   # lidar2_raw = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\velodyne_raw\image_02'
    
-   output_dir = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\depth_map'
+   # output_dir = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\depth\depth_map'
+   
+   gt_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\slam\projected_depth'
+   left_fold = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\slam\rgb'
+   lidar2_raw = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\slam\projected_depth'
+   
+   output_dir = r'D:\Desktop\EECS568\Project\DenseFusionMap\data\slam\depth'
 
    gt = [img for img in os.listdir(gt_fold)]
    image = [img for img in os.listdir(left_fold)]
